@@ -10,7 +10,11 @@ namespace SchedulerAndTracker
     {
         static void Main(string[] args)
         {
+            Session session = new Session();
+            Trainee trainee = new Trainee();
+            Assignment assignment = new Assignment();
 
+            int choice = 0;
         }
     }
 }
