@@ -50,7 +50,9 @@ namespace SchedulerAndTracker
         {
             if (!AllTrainees.ContainsKey(name)) return false;
             if (AllTrainees[name].Contains(assignment)) return false;
+            if (!Assignment.AllAssignments.ContainsKey(assignment)) return false;
             AllTrainees[name].Add(assignment);
+            AllTrainees[name].Sort();
             WriteToFile();
             return true; ;
         }
@@ -64,6 +66,7 @@ namespace SchedulerAndTracker
                 assignmentList.Add(entry.Key);
             }
             if (!AllTrainees.ContainsKey(name)) return false;
+            assignmentList.Sort();
             AllTrainees[name] = assignmentList;
             WriteToFile();
             return true;
