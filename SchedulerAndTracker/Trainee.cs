@@ -92,7 +92,8 @@ namespace SchedulerAndTracker
                 {
                     temp += assignment + ",";
                 }
-                temp = temp.Remove(temp.Length - 1, 1);
+                if (temp.Length > 0)
+                    temp = temp.Remove(temp.Length - 1, 1);
                 sw.WriteLine(temp);
             }
             sw.Close();

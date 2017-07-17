@@ -27,7 +27,7 @@ namespace SchedulerAndTracker
         public static bool Add(string sessionName, int sessionTotalTime)
         {
             if (AllSessions.ContainsKey(sessionName)) return false;
-            AllSessions.Add(sessionName,sessionTotalTime);
+            AllSessions.Add(sessionName, sessionTotalTime);
             WriteToFile();
             return true;
         }
@@ -47,12 +47,12 @@ namespace SchedulerAndTracker
             int weekCounter = 1;
             int dayCounter = 1;
             int hourCounter = 0;
-            foreach(var entry in AllSessions)
+            foreach (var entry in AllSessions)
             {
-                if (hourCounter+entry.Value>=5)
+                if (hourCounter + entry.Value >= 5)
                 {
 
-                    weekToDayToSessionsMap[weekCounter][dayCounter] += entry.Key + "\t"; 
+                    weekToDayToSessionsMap[weekCounter][dayCounter] += entry.Key + "\t";
                 }
             }
             return String.Empty;
@@ -61,9 +61,9 @@ namespace SchedulerAndTracker
         private static void WriteToFile()
         {
             StreamWriter sw = new StreamWriter(filename);
-            foreach(var entry in AllSessions)
+            foreach (var entry in AllSessions)
             {
-                sw.WriteLine(entry.Key+"|"+entry.Value);
+                sw.WriteLine(entry.Key + "|" + entry.Value);
             }
             sw.Close();
         }
