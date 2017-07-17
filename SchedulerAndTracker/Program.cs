@@ -26,7 +26,8 @@ namespace SchedulerAndTracker
                         int sessionChoice = 0;
                         do
                         {
-                            Console.WriteLine("Session Management:\n1.Add a new session\n2.Remove an existing session");
+                            Console.WriteLine("Session Management:\n1.Add a new session\n2.Remove an existing session\n" +
+                                "3.Display All Sessions");
                             sessionChoice = int.Parse(Console.ReadLine());
                             if (sessionChoice == 1)
                             {
@@ -47,6 +48,14 @@ namespace SchedulerAndTracker
                                 Console.Write("Enter the session to remove: ");
                                 string sessionName = Console.ReadLine();
                                 Session.Remove(sessionName);
+                            }
+                            else if (sessionChoice == 3)
+                            {
+                                Console.WriteLine("Session Details:\nName\tDuration");
+                                foreach (var entry in Session.AllSessions)
+                                {
+                                    Console.WriteLine(entry.Key + "\t" + entry.Value);
+                                }
                             }
                         } while (sessionChoice != 0);
                         break;
@@ -102,9 +111,9 @@ namespace SchedulerAndTracker
                                 foreach (var entry in Trainee.AllTrainees)
                                 {
                                     Console.Write(entry.Key + "\t");
-                                    foreach(var aNo in entry.Value)
+                                    foreach (var aNo in entry.Value)
                                     {
-                                        Console.Write(aNo+" ");
+                                        Console.Write(aNo + " ");
                                     }
                                     Console.WriteLine();
                                 }
